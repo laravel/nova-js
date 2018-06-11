@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js add vue
+  /usr/local/Cellar/node@8/8.11.2/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js add vue-rotuer
 
 PATH: 
-  /Users/david/.rvm/gems/ruby-2.4.2/bin:/Users/david/.rvm/gems/ruby-2.4.2@global/bin:/Users/david/.rvm/rubies/ruby-2.4.2/bin:/Users/david/.composer/vendor/bin:./node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/david/.rvm/bin
+  /usr/local/opt/node@8/bin:/Users/david/.composer/vendor/bin:/Users/david/Code/spark-installer:./node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 Yarn version: 
   1.7.0
@@ -14,16 +14,24 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
-      at errnoException (dns.js:50:10)
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+  Error: https://registry.yarnpkg.com/vue-rotuer: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:65656:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:134675:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:135658:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:135578:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
 
 npm manifest: 
   {
     "name": "laravel-nova",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "src/index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -37,14 +45,22 @@ npm manifest:
       "js",
       "admin"
     ],
-    "author": "David Hemphill <davidlee.hemphill@gmail.com> (http://davidhemphill.com/)",
-    "license": "ISC",
+    "contributors": [
+      "Taylor Otwell <taylor@laravel.com> (http://laravel.com/)",
+      "David Hemphill <davidlee.hemphill@gmail.com> (http://davidhemphill.com/)"
+    ],
+    "license": "MIT",
     "bugs": {
       "url": "https://github.com/laravel/nova-js/issues"
     },
     "homepage": "https://github.com/laravel/nova-js#readme",
     "dependencies": {
+      "axios": "^0.18.0",
       "form-backend-validation": "^2.3.3",
+      "inflector-js": "^1.0.1",
+      "portal-vue": "^1.3.0",
+      "vue": "^2.5.16",
+      "vue-async-computed": "^3.3.1",
       "vue-clickaway": "^2.2.2"
     },
     "devDependencies": {
@@ -72,7 +88,7 @@ Lockfile:
     version "2.2.1"
     resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
   
-  "axios@>=0.15 <1.0":
+  "axios@>=0.15 <1.0", axios@^0.18.0:
     version "0.18.0"
     resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
     dependencies:
@@ -581,6 +597,10 @@ Lockfile:
     dependencies:
       ansi-regex "^2.0.0"
   
+  inflector-js@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/inflector-js/-/inflector-js-1.0.1.tgz#8f2b8dae06ba8c1a846e40a196a5e132721be0e0"
+  
   invariant@^2.2.2:
     version "2.2.4"
     resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -612,6 +632,10 @@ Lockfile:
   ms@2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+  
+  portal-vue@^1.3.0:
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/portal-vue/-/portal-vue-1.3.0.tgz#479630547c12bc94200d3485d40f21368955f809"
   
   prettier@^1.10.2:
     version "1.13.5"
@@ -673,8 +697,16 @@ Lockfile:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
   
+  vue-async-computed@^3.3.1:
+    version "3.3.1"
+    resolved "https://registry.yarnpkg.com/vue-async-computed/-/vue-async-computed-3.3.1.tgz#9d754e649ccabef97e7e3932f1bc097a66a23db7"
+  
   vue-clickaway@^2.2.2:
     version "2.2.2"
     resolved "https://registry.yarnpkg.com/vue-clickaway/-/vue-clickaway-2.2.2.tgz#cecf6839575e8b2afc5d3edb3efb616d293dbb44"
     dependencies:
       loose-envify "^1.2.0"
+  
+  vue@^2.5.16:
+    version "2.5.16"
+    resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
