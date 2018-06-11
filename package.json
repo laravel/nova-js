@@ -1,0 +1,41 @@
+{
+  "name": "laravel-nova",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laravel/nova-js.git"
+  },
+  "keywords": [
+    "laravel",
+    "nova",
+    "js",
+    "admin"
+  ],
+  "contributors": [
+    "Taylor Otwell <taylor@laravel.com> (http://laravel.com/)",
+    "David Hemphill <davidlee.hemphill@gmail.com> (http://davidhemphill.com/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laravel/nova-js/issues"
+  },
+  "homepage": "https://github.com/laravel/nova-js#readme",
+  "dependencies": {
+    "form-backend-validation": "^2.3.3",
+    "inflector-js": "^1.0.1",
+    "vue": "^2.5.16",
+    "vue-clickaway": "^2.2.2"
+  },
+  "devDependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
