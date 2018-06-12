@@ -4,7 +4,7 @@ export default {
          * Get the resource information object for the current resource.
          */
         resourceInformation() {
-            return _.find(NovaApp.config.resources, resource => {
+            return _.find(Nova.config.resources, resource => {
                 return resource.uriKey == this.resourceName
             })
         },
@@ -17,7 +17,7 @@ export default {
                 return
             }
 
-            return _.find(NovaApp.config.resources, resource => {
+            return _.find(Nova.config.resources, resource => {
                 return resource.uriKey == this.viaResource
             })
         },

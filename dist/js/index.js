@@ -1840,7 +1840,7 @@ exports.default = {
         resourceInformation: function resourceInformation() {
             var _this = this;
 
-            return _.find(NovaApp.config.resources, function (resource) {
+            return _.find(Nova.config.resources, function (resource) {
                 return resource.uriKey == _this.resourceName;
             });
         },
@@ -1856,7 +1856,7 @@ exports.default = {
                 return;
             }
 
-            return _.find(NovaApp.config.resources, function (resource) {
+            return _.find(Nova.config.resources, function (resource) {
                 return resource.uriKey == _this2.viaResource;
             });
         },

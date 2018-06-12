@@ -62,7 +62,7 @@ const Nova = class Nova {
 }
 
 ;(function() {
-  this.Nova = function(config) {
+  this.CreateNova = function(config) {
     return new Nova(config)
   }
 }.call(window))
