@@ -63,10 +63,11 @@
 import axios from 'axios'
 import _ from 'lodash'
 import storage from '@/storage/BelongsToFieldStorage'
-import { ClickAway, TogglesTrashed, PerformsSearches, HandlesValidationErrors } from '@/mixins'
+import { TogglesTrashed, PerformsSearches, HandlesValidationErrors } from '@/mixins'
+import {mixin as clickaway} from 'vue-clickaway'
 
 export default {
-    mixins: [ClickAway, TogglesTrashed, PerformsSearches, HandlesValidationErrors],
+    mixins: [TogglesTrashed, PerformsSearches, HandlesValidationErrors],
     props: {
         resourceName: String,
         field: Object,

@@ -2,7 +2,7 @@
   "name": "laravel-nova",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/js/app.js",
+  "main": "dist/js/index.js",
   "scripts": {
       "dev": "npm run development",
       "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

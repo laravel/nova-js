@@ -1,4 +1,4 @@
-import { Errors } from 'form-backend-validation'
+import { Errors } from '@/mixins'
 
 export default {
     props: {

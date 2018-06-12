@@ -1,5 +1,3 @@
-import Inflector from 'inflector-js'
-import Capitalize from './capitalize'
-import Minimum from './minimum'
-
-export { Capitalize, Inflector, Minimum }
+export {default as Inflector } from 'inflector-js'
+export {default as Capitalize } from './capitalize'
+export {default as Minimum } from './minimum'

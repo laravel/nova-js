@@ -28,7 +28,7 @@ import './components'
 import router from './router'
 import Loading from './components/Loading'
 
-export const Nova = class Nova {
+const Nova = class Nova {
     constructor(config) {
         this.router = router
         this.bootingCallbacks = []

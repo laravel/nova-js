@@ -1,11 +1,11 @@
-import Dashboard from '../components/Dashboard'
-import ResourceIndex from '../components/Index'
-import ResourceDetail from '../components/Detail'
-import CreateResource from '../components/Create'
-import UpdateResource from '../components/Update'
-import AttachResource from '../components/Attach'
-import UpdateAttachedResource from '../components/UpdateAttached'
-import Lens from '../components/Lens'
+import Dashboard from '@/views/Dashboard'
+import ResourceIndex from '@/views/Index'
+import ResourceDetail from '@/views/Detail'
+import CreateResource from '@/views/Create'
+import UpdateResource from '@/views/Update'
+import AttachResource from '@/views/Attach'
+import UpdateAttachedResource from '@/views/UpdateAttached'
+import Lens from '@/views/Lens'
 
 export default [
     {
