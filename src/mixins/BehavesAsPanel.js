@@ -1,12 +1,12 @@
 export default {
-    props: ['resourceName', 'resourceId', 'resource', 'panel'],
+  props: ['resourceName', 'resourceId', 'resource', 'panel'],
 
-    methods: {
-        /**
-         * Handle the actionExecuted event and pass it up the chain.
-         */
-        actionExecuted() {
-            this.$emit('actionExecuted')
-        },
+  methods: {
+    /**
+     * Handle the actionExecuted event and pass it up the chain.
+     */
+    actionExecuted() {
+      this.$emit('actionExecuted')
     },
+  },
 }
