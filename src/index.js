@@ -16,10 +16,9 @@ import TogglesTrashed from './mixins/TogglesTrashed'
 import Inflector from 'inflector-js'
 import Capitalize from './util/capitalize'
 import Minimum from './util/minimum'
-import { mixin as ClickAway } from 'vue-clickaway'
 import { Errors } from 'form-backend-validation'
 
-export default {
+export {
   // Mixins
   BehavesAsPanel,
   Deletable,
@@ -35,7 +34,6 @@ export default {
   TogglesTrashed,
 
   // Util
-  ClickAway,
   Errors,
   Inflector,
   Capitalize,

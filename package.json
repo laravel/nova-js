@@ -1,34 +1,58 @@
 {
   "name": "laravel-nova",
   "version": "0.1.0",
-  "private": true,
-  "main": "./dist/laravel-nova.common.js",
+  "description": "Supporting modules for Laravel Nova",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name laravel-nova src/index.js",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "start": "webpack-dev-server --config webpack.config.js",
+    "demo": "NODE_ENV=production webpack --config webpack.config.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laravel/nova-js"
+  },
+  "keywords": [
+    "laravel"
+  ],
+  "author": "Taylor Otwell",
+  "contributors": [
+    "Taylor Otwell <taylor@laravel.com> (http://laravel.com/)",
+    "David Hemphill <davidlee.hemphill@gmail.com> (http://davidhemphill.com/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laravel/nova/issues"
+  },
+  "homepage": "https://nova.laravel.com",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0"
+  },
+  "jest": {
+    "testRegex": "test.js$",
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/bootstrap"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/tests/html-serializer"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   },
   "dependencies": {
     "form-backend-validation": "^2.3.3",
-    "inflector-js": "^1.0.1",
-    "vue": "^2.5.16",
-    "vue-clickaway": "^2.2.2"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "@vue/eslint-config-prettier": "^3.0.0-beta.16",
-    "@vue/test-utils": "^1.0.0-beta.16",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "rollup-plugin-alias": "^1.4.0",
-    "vue-template-compiler": "^2.5.16"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "inflector-js": "^1.0.1"
+  }
 }
