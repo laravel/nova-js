@@ -23,7 +23,6 @@ export default {
           },
         })
         .then(() => {
-          // this.deleteModalOpened = false
           this.$toasted.show('The resource was deleted!', { theme: 'nova-success' })
           this.getResources()
         })
@@ -52,7 +51,6 @@ export default {
           },
         })
         .then(() => {
-          // this.deleteModalOpened = false
           this.$toasted.show('The matching resources were deleted!', { theme: 'nova-success' })
           this.getResources()
         })
@@ -70,7 +68,6 @@ export default {
           },
         })
         .then(() => {
-          // this.deleteModalOpened = false
           this.$toasted.show('The resources were detached!', { theme: 'nova-success' })
           this.getResources()
         })
@@ -88,7 +85,6 @@ export default {
           },
         })
         .then(() => {
-          // this.deleteModalOpened = false
           this.$toasted.show('All matching resources were detached!', { theme: 'nova-success' })
           this.getResources()
         })
@@ -106,7 +102,6 @@ export default {
           },
         })
         .then(() => {
-          // this.deleteModalOpened = false
           this.$toasted.show('The resources were force deleted!', { theme: 'nova-success' })
           this.getResources()
         })
@@ -131,7 +126,6 @@ export default {
           },
         })
         .then(() => {
-          // this.deleteModalOpened = false
           this.$toasted.show('All matching resources were force deleted!', {
             theme: 'nova-success',
           })
