@@ -16,14 +16,15 @@ export default {
       }
 
       axios
-        .delete('/nova-api/' + this.resourceName + this.deleteRequestQueryString(), {
+        .delete('/nova-api/' + this.resourceName, {
           params: {
+            ...this.deleteRequestQueryString,
             resources: _.map(resources, resource => resource.id.value),
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
-
+          // this.deleteModalOpened = false
+          this.$toasted.show('The resource was deleted!', { theme: 'nova-success' })
           this.getResources()
         })
     },
@@ -44,14 +45,15 @@ export default {
       }
 
       axios
-        .delete('/nova-api/' + this.resourceName + this.deleteRequestQueryString(), {
+        .delete('/nova-api/' + this.resourceName, {
           params: {
+            ...this.deleteRequestQueryString,
             resources: 'all',
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
-
+          // this.deleteModalOpened = false
+          this.$toasted.show('The matching resources were deleted!', { theme: 'nova-success' })
           this.getResources()
         })
     },
@@ -61,14 +63,15 @@ export default {
      */
     detachResources(resources) {
       axios
-        .delete('/nova-api/' + this.resourceName + '/detach' + this.deleteRequestQueryString(), {
+        .delete('/nova-api/' + this.resourceName + '/detach', {
           params: {
+            ...this.deleteRequestQueryString,
             resources: _.map(resources, resource => resource.id.value),
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
-
+          // this.deleteModalOpened = false
+          this.$toasted.show('The resources were detached!', { theme: 'nova-success' })
           this.getResources()
         })
     },
@@ -78,14 +81,15 @@ export default {
      */
     detachAllMatchingResources() {
       axios
-        .delete('/nova-api/' + this.resourceName + '/detach' + this.deleteRequestQueryString(), {
+        .delete('/nova-api/' + this.resourceName + '/detach', {
           params: {
+            ...this.deleteRequestQueryString,
             resources: 'all',
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
-
+          // this.deleteModalOpened = false
+          this.$toasted.show('All matching resources were detached!', { theme: 'nova-success' })
           this.getResources()
         })
     },
@@ -95,14 +99,15 @@ export default {
      */
     forceDeleteResources(resources) {
       axios
-        .delete('/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString(), {
+        .delete('/nova-api/' + this.resourceName + '/force', {
           params: {
+            ...this.deleteRequestQueryString,
             resources: _.map(resources, resource => resource.id.value),
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
-
+          // this.deleteModalOpened = false
+          this.$toasted.show('The resources were force deleted!', { theme: 'nova-success' })
           this.getResources()
         })
     },
@@ -119,14 +124,17 @@ export default {
      */
     forceDeleteAllMatchingResources() {
       axios
-        .delete('/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString(), {
+        .delete('/nova-api/' + this.resourceName + '/force', {
           params: {
+            ...this.deleteRequestQueryString,
             resources: 'all',
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
-
+          // this.deleteModalOpened = false
+          this.$toasted.show('All matching resources were force deleted!', {
+            theme: 'nova-success',
+          })
           this.getResources()
         })
     },
@@ -135,15 +143,18 @@ export default {
      * Restore the given resources.
      */
     restoreResources(resources) {
-      axios
-        .put('/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString(), {
+      axios({
+        method: 'put',
+        url: `/nova-api/${this.resourceName}/restore`,
+        params: this.deleteRequestQueryString,
+        data: {
           resources: _.map(resources, resource => resource.id.value),
-        })
-        .then(() => {
-          this.deleteModalOpened = false
-
-          this.getResources()
-        })
+        },
+      }).then(() => {
+        // this.deleteModalOpened = false
+        this.$toasted.show('The resources were restored!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
@@ -157,35 +168,32 @@ export default {
      * Restore all of the matching resources.
      */
     restoreAllMatchingResources() {
-      axios
-        .put('/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString(), {
+      axios({
+        method: 'put',
+        url: `/nova-api/${this.resourceName}/restore`,
+        params: this.deleteRequestQueryString,
+        data: {
           resources: 'all',
-        })
-        .then(() => {
-          this.deleteModalOpened = false
-
-          this.getResources()
-        })
+        },
+      }).then(() => {
+        // this.deleteModalOpened = false
+        this.$toasted.show('All matching resources were restored!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
      * Get the query string for a delete resource request.
      */
     deleteRequestQueryString() {
-      return (
-        '?search=' +
-        this.currentSearch +
-        '&filters=' +
-        this.encodedFilters +
-        '&trashed=' +
-        this.currentTrashed +
-        '&viaResource=' +
-        this.viaResource +
-        '&viaResourceId=' +
-        this.viaResourceId +
-        '&viaRelationship=' +
-        this.viaRelationship
-      )
+      return {
+        search: this.currentSearch,
+        filters: this.encodedFilters,
+        trashed: this.currentTrashed,
+        viaResource: this.viaResource,
+        viaResourceId: this.viaResourceId,
+        viaRelationship: this.viaRelationship,
+      }
     },
   },
 }
