@@ -1,3 +1,5 @@
+import map from 'lodash/map'
+
 export default {
   methods: {
     /**
@@ -15,17 +17,17 @@ export default {
         return this.detachResources(resources)
       }
 
-      axios
-        .delete('/nova-api/' + this.resourceName, {
-          params: {
-            ...this.deleteRequestQueryString,
-            resources: _.map(resources, resource => resource.id.value),
-          },
-        })
-        .then(() => {
-          this.$toasted.show('The resource was deleted!', { theme: 'nova-success' })
-          this.getResources()
-        })
+      axios({
+        method: 'delete',
+        url: `/nova-api/${this.resourceName}`,
+        params: this.queryString,
+        data: {
+          resources: map(resources, resource => resource.id.value),
+        },
+      }).then(() => {
+        this.$toasted.show('The resource was deleted!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
@@ -43,68 +45,68 @@ export default {
         return this.detachAllMatchingResources()
       }
 
-      axios
-        .delete('/nova-api/' + this.resourceName, {
-          params: {
-            ...this.deleteRequestQueryString,
-            resources: 'all',
-          },
-        })
-        .then(() => {
-          this.$toasted.show('The matching resources were deleted!', { theme: 'nova-success' })
-          this.getResources()
-        })
+      axios({
+        method: 'delete',
+        url: `/nova-api/${this.resourceName}`,
+        params: this.queryString,
+        data: {
+          resources: 'all',
+        },
+      }).then(() => {
+        this.$toasted.show('The matching resources were deleted!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
      * Detach the given resources.
      */
     detachResources(resources) {
-      axios
-        .delete('/nova-api/' + this.resourceName + '/detach', {
-          params: {
-            ...this.deleteRequestQueryString,
-            resources: _.map(resources, resource => resource.id.value),
-          },
-        })
-        .then(() => {
-          this.$toasted.show('The resources were detached!', { theme: 'nova-success' })
-          this.getResources()
-        })
+      axios({
+        method: 'delete',
+        url: `/nova-api/${this.resourceName}/detach`,
+        params: this.queryString,
+        data: {
+          resources: map(resources, resource => resource.id.value),
+        },
+      }).then(() => {
+        this.$toasted.show('The resources were detached!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
      * Detach all of the matching resources.
      */
     detachAllMatchingResources() {
-      axios
-        .delete('/nova-api/' + this.resourceName + '/detach', {
-          params: {
-            ...this.deleteRequestQueryString,
-            resources: 'all',
-          },
-        })
-        .then(() => {
-          this.$toasted.show('All matching resources were detached!', { theme: 'nova-success' })
-          this.getResources()
-        })
+      axios({
+        method: 'delete',
+        url: `/nova-api/${this.resourceName}/detach`,
+        params: this.queryString,
+        data: {
+          resources: 'all',
+        },
+      }).then(() => {
+        this.$toasted.show('All matching resources were detached!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
      * Force delete the given resources.
      */
     forceDeleteResources(resources) {
-      axios
-        .delete('/nova-api/' + this.resourceName + '/force', {
-          params: {
-            ...this.deleteRequestQueryString,
-            resources: _.map(resources, resource => resource.id.value),
-          },
-        })
-        .then(() => {
-          this.$toasted.show('The resources were force deleted!', { theme: 'nova-success' })
-          this.getResources()
-        })
+      axios({
+        method: 'delete',
+        url: `/nova-api/${this.resourceName}/force`,
+        params: this.queryString,
+        data: {
+          resources: map(resources, resource => resource.id.value),
+        },
+      }).then(() => {
+        this.$toasted.show('The resources were force deleted!', { theme: 'nova-success' })
+        this.getResources()
+      })
     },
 
     /**
@@ -118,19 +120,19 @@ export default {
      * Force delete all of the matching resources.
      */
     forceDeleteAllMatchingResources() {
-      axios
-        .delete('/nova-api/' + this.resourceName + '/force', {
-          params: {
-            ...this.deleteRequestQueryString,
-            resources: 'all',
-          },
+      axios({
+        method: 'delete',
+        url: `/nova-api/${this.resourceName}/force`,
+        params: this.queryString,
+        data: {
+          resources: 'all',
+        },
+      }).then(() => {
+        this.$toasted.show('All matching resources were force deleted!', {
+          theme: 'nova-success',
         })
-        .then(() => {
-          this.$toasted.show('All matching resources were force deleted!', {
-            theme: 'nova-success',
-          })
-          this.getResources()
-        })
+        this.getResources()
+      })
     },
 
     /**
@@ -140,9 +142,9 @@ export default {
       axios({
         method: 'put',
         url: `/nova-api/${this.resourceName}/restore`,
-        params: this.deleteRequestQueryString,
+        params: this.queryString,
         data: {
-          resources: _.map(resources, resource => resource.id.value),
+          resources: map(resources, resource => resource.id.value),
         },
       }).then(() => {
         // this.deleteModalOpened = false
@@ -165,7 +167,7 @@ export default {
       axios({
         method: 'put',
         url: `/nova-api/${this.resourceName}/restore`,
-        params: this.deleteRequestQueryString,
+        params: this.queryString,
         data: {
           resources: 'all',
         },
@@ -175,11 +177,13 @@ export default {
         this.getResources()
       })
     },
+  },
 
+  computed: {
     /**
      * Get the query string for a delete resource request.
      */
-    deleteRequestQueryString() {
+    queryString() {
       return {
         search: this.currentSearch,
         filters: this.encodedFilters,

@@ -1,3 +1,5 @@
+import debounce from 'lodash/debounce'
+
 export default {
   data: () => ({
     search: '',
@@ -53,6 +55,6 @@ export default {
     /**
      * Debounce function for the search handler
      */
-    debouncer: _.debounce(callback => callback(), 500),
+    debouncer: debounce(callback => callback(), 500),
   },
 }

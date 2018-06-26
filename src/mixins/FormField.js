@@ -17,8 +17,8 @@ export default {
 
   methods: {
     /*
-         * Set the initial value for the field
-         */
+     * Set the initial value for the field
+     */
     setInitialValue() {
       this.value = this.field.value || ''
     },

@@ -1,3 +1,5 @@
+import upperFirst from 'lodash/upperFirst'
+
 export default function(string) {
-    return _.upperFirst(string)
+    return upperFirst(string)
 }
