@@ -10,18 +10,18 @@ export default {
     /**
      * Delete the given resources.
      */
-    deleteResources(resources) {
+    deleteResources(resources, callback = null) {
       if (this.viaManyToMany) {
         return this.detachResources(resources)
       }
 
-      axios
+      return axios
         .delete('/nova-api/' + this.resourceName + this.deleteRequestQueryString(), {
           params: {
             resources: _.map(resources, resource => resource.id.value),
           },
         })
-        .then(() => {
+        .then(callback ? callback : () => {
           this.deleteModalOpened = false
 
           this.getResources()
@@ -93,14 +93,14 @@ export default {
     /**
      * Force delete the given resources.
      */
-    forceDeleteResources(resources) {
-      axios
+    forceDeleteResources(resources, callback = null) {
+      return axios
         .delete('/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString(), {
           params: {
             resources: _.map(resources, resource => resource.id.value),
           },
         })
-        .then(() => {
+        .then(callback ? callback : () => {
           this.deleteModalOpened = false
 
           this.getResources()
@@ -134,13 +134,13 @@ export default {
     /**
      * Restore the given resources.
      */
-    restoreResources(resources) {
-      axios
+    restoreResources(resources, callback = null) {
+      return axios
         .put('/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString(), {
           resources: _.map(resources, resource => resource.id.value),
         })
-        .then(() => {
-          this.deleteModalOpened = false
+        .then(callback ? callback : () => {
+          this.restoreModalOpen = false
 
           this.getResources()
         })
@@ -162,7 +162,7 @@ export default {
           resources: 'all',
         })
         .then(() => {
-          this.deleteModalOpened = false
+          this.restoreModalOpen = false
 
           this.getResources()
         })
