@@ -4,7 +4,7 @@ export default {
      * Open the delete menu modal.
      */
     openDeleteModal() {
-      this.deleteModalOpened = true
+      this.deleteModalOpen = true
     },
 
     /**
@@ -22,7 +22,7 @@ export default {
           },
         })
         .then(callback ? callback : () => {
-          this.deleteModalOpened = false
+          this.deleteModalOpen = false
 
           this.getResources()
         })
@@ -50,7 +50,7 @@ export default {
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
+          this.deleteModalOpen = false
 
           this.getResources()
         })
@@ -67,7 +67,7 @@ export default {
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
+          this.deleteModalOpen = false
 
           this.getResources()
         })
@@ -84,7 +84,7 @@ export default {
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
+          this.deleteModalOpen = false
 
           this.getResources()
         })
@@ -101,7 +101,7 @@ export default {
           },
         })
         .then(callback ? callback : () => {
-          this.deleteModalOpened = false
+          this.deleteModalOpen = false
 
           this.getResources()
         })
@@ -125,7 +125,7 @@ export default {
           },
         })
         .then(() => {
-          this.deleteModalOpened = false
+          this.deleteModalOpen = false
 
           this.getResources()
         })
