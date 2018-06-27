@@ -1,3 +1,6 @@
+import each from 'lodash/each'
+import get from 'lodash/get'
+
 export default {
   data() {
     return {
@@ -26,7 +29,7 @@ export default {
     clearAllFilters() {
       this.currentFilters = []
 
-      _.each(this.filters, filter => {
+      each(this.filters, filter => {
         filter.currentValue = ''
       })
     },
@@ -35,8 +38,8 @@ export default {
      * Sync the current filter values with the decoded filter query string values.
      */
     syncFilterValues() {
-      _.each(this.filters, filter => {
-        filter.currentValue = _.get(
+      each(this.filters, filter => {
+        filter.currentValue = get(
           _(this.currentFilters).find(decoded => {
             return filter.class == decoded.class
           }),
