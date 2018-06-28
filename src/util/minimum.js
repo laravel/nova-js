@@ -1,4 +1,4 @@
-export default function(originalPromise, delay = 250) {
+export default function(originalPromise, delay = 100) {
     return Promise.all([
         originalPromise,
         new Promise(resolve => {
