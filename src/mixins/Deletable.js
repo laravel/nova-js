@@ -21,11 +21,15 @@ export default {
             resources: _.map(resources, resource => resource.id.value),
           },
         })
-        .then(callback ? callback : () => {
-          this.deleteModalOpen = false
+        .then(
+          callback
+            ? callback
+            : () => {
+                this.deleteModalOpen = false
 
-          this.getResources()
-        })
+                this.getResources()
+              }
+        )
     },
 
     /**
@@ -100,11 +104,15 @@ export default {
             resources: _.map(resources, resource => resource.id.value),
           },
         })
-        .then(callback ? callback : () => {
-          this.deleteModalOpen = false
+        .then(
+          callback
+            ? callback
+            : () => {
+                this.deleteModalOpen = false
 
-          this.getResources()
-        })
+                this.getResources()
+              }
+        )
     },
 
     /**
@@ -139,11 +147,15 @@ export default {
         .put('/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString(), {
           resources: _.map(resources, resource => resource.id.value),
         })
-        .then(callback ? callback : () => {
-          this.restoreModalOpen = false
+        .then(
+          callback
+            ? callback
+            : () => {
+                this.restoreModalOpen = false
 
-          this.getResources()
-        })
+                this.getResources()
+              }
+        )
     },
 
     /**
