@@ -17,6 +17,7 @@ import Inflector from 'inflector-js'
 import Capitalize from './util/capitalize'
 import Minimum from './util/minimum'
 import { Errors } from 'form-backend-validation'
+import SingularOrPlural from './util/singularOrPlural'
 
 export {
   // Mixins
@@ -32,10 +33,10 @@ export {
   PerformsSearches,
   PerPageable,
   TogglesTrashed,
-
   // Util
   Errors,
   Inflector,
   Capitalize,
   Minimum,
+  SingularOrPlural,
 }
