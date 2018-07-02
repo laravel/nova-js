@@ -24,7 +24,7 @@ export default {
     },
 
     /**
-     * Provide a function the fills a passed FormData object with the
+     * Provide a function that fills a passed FormData object with the
      * field's internal value attribute
      */
     fill(formData) {
