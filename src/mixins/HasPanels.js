@@ -1,17 +1,18 @@
 export default {
-  data: () => ({ metricPanels: [] }),
+  data: () => ({ cards: [] }),
 
   /**
    * Fetch all of the metrics panels for this view
    */
   created() {
-    this.fetchMetricPanels()
+    this.fetchCards()
   },
 
   methods: {
-    async fetchMetricPanels() {
-      const { data: panels } = await axios.get(this.metricsEndpoint)
-      this.metricPanels = panels
+    async fetchCards() {
+      const { data: cards } = await axios.get(this.cardsEndpoint)
+
+      this.cards = cards
     },
   },
 }
