@@ -4,7 +4,7 @@ import Deletable from './mixins/Deletable'
 import Filterable from './mixins/Filterable'
 import FormField from './mixins/FormField'
 import HandlesValidationErrors from './mixins/HandlesValidationErrors'
-import HasPanels from './mixins/HasPanels'
+import HasCards from './mixins/HasCards'
 import InteractsWithQueryString from './mixins/InteractsWithQueryString'
 import InteractsWithResourceInformation from './mixins/InteractsWithResourceInformation'
 import Paginatable from './mixins/Paginatable'
@@ -26,7 +26,7 @@ export {
   Filterable,
   FormField,
   HandlesValidationErrors,
-  HasPanels,
+  HasCards,
   InteractsWithQueryString,
   InteractsWithResourceInformation,
   Paginatable,
