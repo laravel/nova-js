@@ -3,9 +3,9 @@ import BehavesAsPanel from './mixins/BehavesAsPanel'
 import Deletable from './mixins/Deletable'
 import Filterable from './mixins/Filterable'
 import FormField from './mixins/FormField'
-import FormatsDates from './mixins/FormatsDates'
 import HandlesValidationErrors from './mixins/HandlesValidationErrors'
 import HasCards from './mixins/HasCards'
+import InteractsWithDates from './mixins/InteractsWithDates'
 import InteractsWithQueryString from './mixins/InteractsWithQueryString'
 import InteractsWithResourceInformation from './mixins/InteractsWithResourceInformation'
 import Paginatable from './mixins/Paginatable'
@@ -26,9 +26,9 @@ export {
   Deletable,
   Filterable,
   FormField,
-  FormatsDates,
   HandlesValidationErrors,
   HasCards,
+  InteractsWithDates,
   InteractsWithQueryString,
   InteractsWithResourceInformation,
   Paginatable,
