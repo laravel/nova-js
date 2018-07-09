@@ -1,6 +1,29 @@
 export default {
   methods: {
     /**
+     * Convert the given localized date time string to UTC.
+     */
+    toUtc(value) {
+      return value
+                  ? moment.tz(value, moment.tz.guess()).clone().tz('UTC').format('YYYY-MM-DD kk:mm:ss')
+                  : value
+    },
+
+    /**
+     * Convert the given UTC date time string to the local timezone.
+     */
+    fromUtc(value) {
+        if (! value) {
+            return '';
+        }
+
+        return moment.tz(value, 'UTC')
+                    .clone()
+                    .tz(moment.tz.guess())
+                    .format('YYYY-MM-DD kk:mm:ss')
+    },
+
+    /**
      * Get the localized date time for the given field.
      */
     localizeDateTimeField(field) {
