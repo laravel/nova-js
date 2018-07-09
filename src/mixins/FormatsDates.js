@@ -5,7 +5,7 @@ export default {
      */
     toAppTimezone(value) {
       return value
-                  ? moment.tz(value, moment.tz.guess()).clone().tz('UTC').format('YYYY-MM-DD kk:mm:ss')
+                  ? moment.tz(value, moment.tz.guess()).clone().tz(Nova.timezone).format('YYYY-MM-DD kk:mm:ss')
                   : value
     },
 
@@ -17,7 +17,7 @@ export default {
             return value;
         }
 
-        return moment.tz(value, 'UTC')
+        return moment.tz(value, Nova.timezone)
                     .clone()
                     .tz(moment.tz.guess())
                     .format('YYYY-MM-DD kk:mm:ss')
