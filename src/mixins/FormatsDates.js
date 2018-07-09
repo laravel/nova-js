@@ -45,7 +45,7 @@ export default {
         return localized.format(field.format)
       }
 
-      return this.twelveHourTime
+      return this.usesTwelveHourTime
         ? localized.format('YYYY-MM-DD h:mm:ss A')
         : localized.format('YYYY-MM-DD kk:mm:ss')
     },
@@ -73,9 +73,16 @@ export default {
 
   computed: {
     /**
+     * Get the user's local timezone.
+     */
+    userTimezone() {
+      return moment.tz.guess()
+    },
+
+    /**
      * Determine if the user is used to 12 hour time.
      */
-    twelveHourTime() {
+    usesTwelveHourTime() {
       return (
         _.endsWith(new Date().toLocaleString(), 'AM') ||
         _.endsWith(new Date().toLocaleString(), 'PM')
