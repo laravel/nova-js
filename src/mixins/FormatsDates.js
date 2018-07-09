@@ -1,7 +1,7 @@
 export default {
   methods: {
     /**
-     * Convert the given localized date time string to UTC.
+     * Convert the given localized date time string to the application's timezone.
      */
     toAppTimezone(value) {
       return value
@@ -10,7 +10,7 @@ export default {
     },
 
     /**
-     * Convert the given UTC date time string to the local timezone.
+     * Convert the given application timezone date time string to the local timezone.
      */
     fromAppTimezone(value) {
         if (! value) {
