@@ -3,7 +3,7 @@ export default {
     /**
      * Convert the given localized date time string to UTC.
      */
-    toUtc(value) {
+    toAppTimezone(value) {
       return value
                   ? moment.tz(value, moment.tz.guess()).clone().tz('UTC').format('YYYY-MM-DD kk:mm:ss')
                   : value
@@ -12,7 +12,7 @@ export default {
     /**
      * Convert the given UTC date time string to the local timezone.
      */
-    fromUtc(value) {
+    fromAppTimezone(value) {
         if (! value) {
             return '';
         }
