@@ -6,7 +6,7 @@ export default {
     toAppTimezone(value) {
       return value
         ? moment
-            .tz(value, moment.tz.guess())
+            .tz(value, this.userTimezone)
             .clone()
             .tz(Nova.config.timezone)
             .format('YYYY-MM-DD kk:mm:ss')
@@ -24,7 +24,7 @@ export default {
       return moment
         .tz(value, Nova.config.timezone)
         .clone()
-        .tz(moment.tz.guess())
+        .tz(this.userTimezone)
         .format('YYYY-MM-DD kk:mm:ss')
     },
 
@@ -39,7 +39,7 @@ export default {
       const localized = moment
         .tz(field.value, Nova.config.timezone)
         .clone()
-        .tz(moment.tz.guess())
+        .tz(this.userTimezone)
 
       if (field.format) {
         return localized.format(field.format)
@@ -61,7 +61,7 @@ export default {
       const localized = moment
         .tz(field.value, Nova.config.timezone)
         .clone()
-        .tz(moment.tz.guess())
+        .tz(this.userTimezone)
 
       if (field.format) {
         return localized.format(field.format)
@@ -76,7 +76,7 @@ export default {
      * Get the user's local timezone.
      */
     userTimezone() {
-      return moment.tz.guess()
+      return Nova.config.userTimezone ? Nova.config.userTimezone : moment.tz.guess()
     },
 
     /**
