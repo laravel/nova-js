@@ -14,7 +14,7 @@ export default {
      */
     fromAppTimezone(value) {
         if (! value) {
-            return '';
+            return value;
         }
 
         return moment.tz(value, 'UTC')
@@ -28,7 +28,7 @@ export default {
      */
     localizeDateTimeField(field) {
         if (! field.value) {
-            return ''
+            return field.value;
         }
 
         const localized = moment.tz(field.value, Nova.timezone)
@@ -49,7 +49,7 @@ export default {
      */
     localizeDateField(field) {
         if (! field.value) {
-            return ''
+            return field.value;
         }
 
         const localized = moment.tz(field.value, Nova.timezone)
