@@ -15,13 +15,13 @@ export default {
     this.field.fill = this.fill
 
     // Register a global event for setting the field's value
-    Bus.$on(this.field.attribute + '-value', (value) => {
-        this.value = value
+    Nova.$on(this.field.attribute + '-value', value => {
+      this.value = value
     })
   },
 
   destroyed() {
-    Bus.$off(this.field.attribute + '-value')
+    Nova.$off(this.field.attribute + '-value')
   },
 
   methods: {
