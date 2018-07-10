@@ -13,6 +13,15 @@ export default {
 
     // Add a default fill method for the field
     this.field.fill = this.fill
+
+    // Register a global event for setting the field's value
+    Bus.$on(this.field.attribute + '-value', (value) => {
+        this.value = value
+    })
+  },
+
+  destroyed() {
+    Bus.$off(this.field.attribute + '-value')
   },
 
   methods: {
