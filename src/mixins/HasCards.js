@@ -10,7 +10,7 @@ export default {
 
   methods: {
     async fetchCards() {
-      const { data: cards } = await axios.get(this.cardsEndpoint)
+      const { data: cards } = await Nova.request().get(this.cardsEndpoint)
 
       this.cards = cards
     },
