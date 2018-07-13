@@ -192,7 +192,7 @@ export default {
      */
     restoreAllMatchingResources() {
       axios
-        .put('/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString(), {
+        .put(this.restoreAllMatchingResourcesEndpoint(), {
           resources: 'all',
         })
         .then(() => {
