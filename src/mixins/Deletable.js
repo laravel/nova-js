@@ -48,7 +48,7 @@ export default {
       }
 
       axios
-        .delete('/nova-api/' + this.resourceName + this.deleteRequestQueryString(), {
+        .delete(this.deleteAllMatchingResourcesEndpoint(), {
           params: {
             resources: 'all',
           },
@@ -58,6 +58,17 @@ export default {
 
           this.getResources()
         })
+    },
+
+    /**
+     * Get the delete all matching resources endpoint.
+     */
+    deleteAllMatchingResourcesEndpoint() {
+        if (this.lens) {
+            return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/' + this.deleteRequestQueryString()
+        }
+
+        return '/nova-api/' + this.resourceName + this.deleteRequestQueryString()
     },
 
     /**
@@ -127,7 +138,7 @@ export default {
      */
     forceDeleteAllMatchingResources() {
       axios
-        .delete('/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString(), {
+        .delete(this.forceDeleteSelectedResourcesEndpoint(), {
           params: {
             resources: 'all',
           },
@@ -137,6 +148,17 @@ export default {
 
           this.getResources()
         })
+    },
+
+    /**
+     * Get the force delete all of the matching resources endpoint.
+     */
+    forceDeleteSelectedResourcesEndpoint() {
+        if (this.lens) {
+            return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/force' + this.deleteRequestQueryString()
+        }
+
+        return '/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString()
     },
 
     /**
@@ -178,6 +200,17 @@ export default {
 
           this.getResources()
         })
+    },
+
+    /**
+     * Get the restore all of the matching resources endpoint.
+     */
+    restoreAllMatchingResourcesEndpoint() {
+        if (this.lens) {
+            return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/restore' + this.deleteRequestQueryString()
+        }
+
+        return '/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString()
     },
 
     /**
