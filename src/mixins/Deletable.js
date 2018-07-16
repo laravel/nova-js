@@ -185,54 +185,54 @@ export default {
         this.getResources()
       })
     },
+  },
 
-    computed: {
-      /**
-       * Get the delete all matching resources endpoint.
-       */
-      deleteAllMatchingResourcesEndpoint() {
-        if (this.lens) {
-          return '/nova-api/' + this.resourceName + '/lens/' + this.lens
-        }
+  computed: {
+    /**
+     * Get the delete all matching resources endpoint.
+     */
+    deleteAllMatchingResourcesEndpoint() {
+      if (this.lens) {
+        return '/nova-api/' + this.resourceName + '/lens/' + this.lens
+      }
 
-        return '/nova-api/' + this.resourceName
-      },
+      return '/nova-api/' + this.resourceName
+    },
 
-      /**
-       * Get the force delete all of the matching resources endpoint.
-       */
-      forceDeleteSelectedResourcesEndpoint() {
-        if (this.lens) {
-          return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/force'
-        }
+    /**
+     * Get the force delete all of the matching resources endpoint.
+     */
+    forceDeleteSelectedResourcesEndpoint() {
+      if (this.lens) {
+        return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/force'
+      }
 
-        return '/nova-api/' + this.resourceName + '/force'
-      },
+      return '/nova-api/' + this.resourceName + '/force'
+    },
 
-      /**
-       * Get the restore all of the matching resources endpoint.
-       */
-      restoreAllMatchingResourcesEndpoint() {
-        if (this.lens) {
-          return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/restore'
-        }
+    /**
+     * Get the restore all of the matching resources endpoint.
+     */
+    restoreAllMatchingResourcesEndpoint() {
+      if (this.lens) {
+        return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/restore'
+      }
 
-        return '/nova-api/' + this.resourceName + '/restore'
-      },
+      return '/nova-api/' + this.resourceName + '/restore'
+    },
 
-      /**
-       * Get the query string for a deletable resource request.
-       */
-      queryString() {
-        return {
-          search: this.currentSearch,
-          filters: this.encodedFilters,
-          trashed: this.currentTrashed,
-          viaResource: this.viaResource,
-          viaResourceId: this.viaResourceId,
-          viaRelationship: this.viaRelationship,
-        }
-      },
+    /**
+     * Get the query string for a deletable resource request.
+     */
+    queryString() {
+      return {
+        search: this.currentSearch,
+        filters: this.encodedFilters,
+        trashed: this.currentTrashed,
+        viaResource: this.viaResource,
+        viaResourceId: this.viaResourceId,
+        viaRelationship: this.viaRelationship,
+      }
     },
   },
 }
