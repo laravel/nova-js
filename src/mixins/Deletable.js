@@ -15,21 +15,21 @@ export default {
         return this.detachResources(resources)
       }
 
-      return axios
-        .delete('/nova-api/' + this.resourceName + this.deleteRequestQueryString(), {
-          params: {
-            resources: _.map(resources, resource => resource.id.value),
-          },
-        })
-        .then(
-          callback
-            ? callback
-            : () => {
-                this.deleteModalOpen = false
-
-                this.getResources()
-              }
-        )
+      return Nova.request({
+        url: '/nova-api/' + this.resourceName,
+        method: 'delete',
+        params: {
+          ...this.queryString,
+          ...{ resources: mapResources(resources) },
+        },
+      }).then(
+        callback
+          ? callback
+          : () => {
+              this.deleteModalOpen = false
+              this.getResources()
+            }
+      )
     },
 
     /**
@@ -47,83 +47,73 @@ export default {
         return this.detachAllMatchingResources()
       }
 
-      axios
-        .delete(this.deleteAllMatchingResourcesEndpoint(), {
-          params: {
-            resources: 'all',
-          },
-        })
-        .then(() => {
-          this.deleteModalOpen = false
-
-          this.getResources()
-        })
-    },
-
-    /**
-     * Get the delete all matching resources endpoint.
-     */
-    deleteAllMatchingResourcesEndpoint() {
-        if (this.lens) {
-            return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/' + this.deleteRequestQueryString()
-        }
-
-        return '/nova-api/' + this.resourceName + this.deleteRequestQueryString()
+      return Nova.request({
+        url: this.deleteAllMatchingResourcesEndpoint,
+        method: 'delete',
+        params: {
+          ...this.queryString,
+          ...{ resources: 'all' },
+        },
+      }).then(() => {
+        this.deleteModalOpen = false
+        this.getResources()
+      })
     },
 
     /**
      * Detach the given resources.
      */
     detachResources(resources) {
-      axios
-        .delete('/nova-api/' + this.resourceName + '/detach' + this.deleteRequestQueryString(), {
-          params: {
-            resources: _.map(resources, resource => resource.id.value),
-          },
-        })
-        .then(() => {
-          this.deleteModalOpen = false
-
-          this.getResources()
-        })
+      return Nova.request({
+        url: '/nova-api/' + this.resourceName + '/detach',
+        method: 'delete',
+        params: {
+          ...this.queryString,
+          ...{ resources: mapResources(resources) },
+        },
+      }).then(() => {
+        this.deleteModalOpen = false
+        this.getResources()
+      })
     },
 
     /**
      * Detach all of the matching resources.
      */
     detachAllMatchingResources() {
-      axios
-        .delete('/nova-api/' + this.resourceName + '/detach' + this.deleteRequestQueryString(), {
-          params: {
-            resources: 'all',
-          },
-        })
-        .then(() => {
-          this.deleteModalOpen = false
-
-          this.getResources()
-        })
+      return Nova.request({
+        url: '/nova-api/' + this.resourceName + '/detach',
+        method: 'delete',
+        params: {
+          ...this.queryString,
+          ...{ resources: 'all' },
+        },
+      }).then(() => {
+        this.deleteModalOpen = false
+        this.getResources()
+      })
     },
 
     /**
      * Force delete the given resources.
      */
     forceDeleteResources(resources, callback = null) {
-      return axios
-        .delete('/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString(), {
-          params: {
-            resources: _.map(resources, resource => resource.id.value),
-          },
-        })
-        .then(
-          callback
-            ? callback
-            : () => {
-                this.deleteModalOpen = false
+      return Nova.request({
+        url: '/nova-api/' + this.resourceName + '/force',
+        method: 'delete',
+        params: {
+          ...this.queryString,
+          ...{ resources: mapResources(resources) },
+        },
+      }).then(
+        callback
+          ? callback
+          : () => {
+              this.deleteModalOpen = false
 
-                this.getResources()
-              }
-        )
+              this.getResources()
+            }
+      )
     },
 
     /**
@@ -137,47 +127,39 @@ export default {
      * Force delete all of the matching resources.
      */
     forceDeleteAllMatchingResources() {
-      axios
-        .delete(this.forceDeleteSelectedResourcesEndpoint(), {
-          params: {
-            resources: 'all',
-          },
-        })
-        .then(() => {
-          this.deleteModalOpen = false
-
-          this.getResources()
-        })
-    },
-
-    /**
-     * Get the force delete all of the matching resources endpoint.
-     */
-    forceDeleteSelectedResourcesEndpoint() {
-        if (this.lens) {
-            return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/force' + this.deleteRequestQueryString()
-        }
-
-        return '/nova-api/' + this.resourceName + '/force' + this.deleteRequestQueryString()
+      return Nova.request({
+        url: this.forceDeleteSelectedResourcesEndpoint,
+        method: 'delete',
+        params: {
+          ...this.queryString,
+          ...{ resources: 'all' },
+        },
+      }).then(() => {
+        this.deleteModalOpen = false
+        this.getResources()
+      })
     },
 
     /**
      * Restore the given resources.
      */
     restoreResources(resources, callback = null) {
-      return axios
-        .put('/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString(), {
-          resources: _.map(resources, resource => resource.id.value),
-        })
-        .then(
-          callback
-            ? callback
-            : () => {
-                this.restoreModalOpen = false
+      return Nova.request({
+        url: '/nova-api/' + this.resourceName + '/restore',
+        method: 'put',
+        params: {
+          ...this.queryString,
+          ...{ resources: mapResources(resources) },
+        },
+      }).then(
+        callback
+          ? callback
+          : () => {
+              this.restoreModalOpen = false
 
-                this.getResources()
-              }
-        )
+              this.getResources()
+            }
+      )
     },
 
     /**
@@ -191,46 +173,70 @@ export default {
      * Restore all of the matching resources.
      */
     restoreAllMatchingResources() {
-      axios
-        .put(this.restoreAllMatchingResourcesEndpoint(), {
-          resources: 'all',
-        })
-        .then(() => {
-          this.restoreModalOpen = false
-
-          this.getResources()
-        })
+      return Nova.request({
+        url: this.restoreAllMatchingResourcesEndpoint,
+        method: 'put',
+        params: {
+          ...this.queryString,
+          ...{ resources: 'all' },
+        },
+      }).then(() => {
+        this.restoreModalOpen = false
+        this.getResources()
+      })
     },
 
-    /**
-     * Get the restore all of the matching resources endpoint.
-     */
-    restoreAllMatchingResourcesEndpoint() {
+    computed: {
+      /**
+       * Get the delete all matching resources endpoint.
+       */
+      deleteAllMatchingResourcesEndpoint() {
         if (this.lens) {
-            return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/restore' + this.deleteRequestQueryString()
+          return '/nova-api/' + this.resourceName + '/lens/' + this.lens
         }
 
-        return '/nova-api/' + this.resourceName + '/restore' + this.deleteRequestQueryString()
-    },
+        return '/nova-api/' + this.resourceName
+      },
 
-    /**
-     * Get the query string for a delete resource request.
-     */
-    deleteRequestQueryString() {
-      return (
-        '?search=' +
-        this.currentSearch +
-        '&filters=' +
-        this.encodedFilters +
-        '&trashed=' +
-        this.currentTrashed +
-        '&viaResource=' +
-        this.viaResource +
-        '&viaResourceId=' +
-        this.viaResourceId +
-        '&viaRelationship=' +
-        this.viaRelationship
-      )
+      /**
+       * Get the force delete all of the matching resources endpoint.
+       */
+      forceDeleteSelectedResourcesEndpoint() {
+        if (this.lens) {
+          return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/force'
+        }
+
+        return '/nova-api/' + this.resourceName + '/force'
+      },
+
+      /**
+       * Get the restore all of the matching resources endpoint.
+       */
+      restoreAllMatchingResourcesEndpoint() {
+        if (this.lens) {
+          return '/nova-api/' + this.resourceName + '/lens/' + this.lens + '/restore'
+        }
+
+        return '/nova-api/' + this.resourceName + '/restore'
+      },
+
+      /**
+       * Get the query string for a deletable resource request.
+       */
+      queryString() {
+        return {
+          search: this.currentSearch,
+          filters: this.encodedFilters,
+          trashed: this.currentTrashed,
+          viaResource: this.viaResource,
+          viaResourceId: this.viaResourceId,
+          viaRelationship: this.viaRelationship,
+        }
+      },
     },
   },
+}
+
+function mapResources(resources) {
+  return _.map(resources, resource => resource.id.value)
 }
