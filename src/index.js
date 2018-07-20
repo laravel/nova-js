@@ -15,6 +15,7 @@ import TogglesTrashed from './mixins/TogglesTrashed'
 
 // Util
 import Inflector from 'inflector-js'
+import CardSizes from './util/cardSizes'
 import Capitalize from './util/capitalize'
 import Minimum from './util/minimum'
 import { Errors } from 'form-backend-validation'
@@ -41,4 +42,5 @@ export {
   Capitalize,
   Minimum,
   SingularOrPlural,
+  CardSizes,
 }
