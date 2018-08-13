@@ -1,6 +1,6 @@
 {
   "name": "laravel-nova",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Supporting modules for Laravel Nova",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,9 @@
     "type": "git",
     "url": "https://github.com/laravel/nova-js"
   },
-  "keywords": ["laravel"],
+  "keywords": [
+    "laravel"
+  ],
   "author": "Taylor Otwell",
   "contributors": [
     "Taylor Otwell <taylor@laravel.com> (http://laravel.com/)",
@@ -36,9 +38,15 @@
   },
   "jest": {
     "testRegex": "test.js$",
-    "moduleFileExtensions": ["js"],
-    "setupFiles": ["<rootDir>/tests/bootstrap"],
-    "snapshotSerializers": ["<rootDir>/tests/html-serializer"],
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/bootstrap"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/tests/html-serializer"
+    ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     }
