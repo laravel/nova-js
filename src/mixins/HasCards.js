@@ -1,6 +1,13 @@
 import cardSizes from '../util/cardSizes'
 
 export default {
+  props: {
+    loadCards: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
   data: () => ({ cards: [] }),
 
   /**
@@ -12,9 +19,12 @@ export default {
 
   methods: {
     async fetchCards() {
-      const { data: cards } = await Nova.request().get(this.cardsEndpoint)
-
-      this.cards = cards
+      // We disable fetching of cards when the component is being show
+      // on a resource detail view to avoid extra network requests
+      if (this.loadCards) {
+        const { data: cards } = await Nova.request().get(this.cardsEndpoint)
+        this.cards = cards
+      }
     },
   },
 
