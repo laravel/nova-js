@@ -17,6 +17,12 @@ export default {
     this.fetchCards()
   },
 
+  watch: {
+    cardsEndpoint() {
+      this.fetchCards()
+    }
+  },
+
   methods: {
     async fetchCards() {
       // We disable fetching of cards when the component is being show
