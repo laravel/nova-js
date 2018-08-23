@@ -9,7 +9,7 @@ export default {
             .tz(value, this.userTimezone)
             .clone()
             .tz(Nova.config.timezone)
-            .format('YYYY-MM-DD kk:mm:ss')
+            .format('YYYY-MM-DD HH:mm:ss')
         : value
     },
 
@@ -25,7 +25,7 @@ export default {
         .tz(value, Nova.config.timezone)
         .clone()
         .tz(this.userTimezone)
-        .format('YYYY-MM-DD kk:mm:ss')
+        .format('YYYY-MM-DD HH:mm:ss')
     },
 
     /**
@@ -47,7 +47,7 @@ export default {
 
       return this.usesTwelveHourTime
         ? localized.format('YYYY-MM-DD h:mm:ss A')
-        : localized.format('YYYY-MM-DD kk:mm:ss')
+        : localized.format('YYYY-MM-DD HH:mm:ss')
     },
 
     /**
