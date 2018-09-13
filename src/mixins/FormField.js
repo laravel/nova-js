@@ -29,7 +29,7 @@ export default {
      * Set the initial value for the field
      */
     setInitialValue() {
-      this.value = this.field.value || ''
+      this.value = !(this.field.value === undefined || this.field.value === null) ? this.field.value : ''
     },
 
     /**
