@@ -1,6 +1,6 @@
 {
   "name": "laravel-nova",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Supporting modules for Laravel Nova",
   "main": "dist/index.js",
   "scripts": {
