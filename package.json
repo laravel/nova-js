@@ -52,6 +52,7 @@
     }
   },
   "dependencies": {
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "form-backend-validation": "^2.3.3",
     "inflector-js": "^1.0.1"
   }

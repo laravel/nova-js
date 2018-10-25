@@ -29,7 +29,9 @@ export default {
      * Set the initial value for the field
      */
     setInitialValue() {
-      this.value = !(this.field.value === undefined || this.field.value === null) ? this.field.value : ''
+      this.value = !(this.field.value === undefined || this.field.value === null)
+        ? this.field.value
+        : ''
     },
 
     /**
@@ -37,7 +39,7 @@ export default {
      * field's internal value attribute
      */
     fill(formData) {
-      formData.append(this.field.attribute, this.value || '')
+      formData.append(this.field.attribute, String(this.value))
     },
 
     /**
