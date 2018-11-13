@@ -6,8 +6,12 @@ export default {
     /**
      * Clear filters and reset the resource table
      */
-    async clearSelectedFilters() {
-      await this.$store.dispatch('resetFilterState', this.resourceName)
+    async clearSelectedFilters(lens) {
+      if (lens) {
+        await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName, lens })
+      } else {
+        await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName })
+      }
 
       this.updateQueryString({
         [this.pageParameter]: 1,
@@ -28,31 +32,21 @@ export default {
     /**
      * Set up filters for the current view
      */
-    async initializeFilters() {
-      await this.$store.dispatch('fetchFilters', this.resourceName)
-      this.initializeState()
-    },
-
-    /**
-     * Set up filters for the current lens view
-     */
-    async initializeLensFilters(lens) {
-      await this.$store.dispatch('fetchLensFilters', { resourceName: this.resourceName, lens })
-      this.initializeState()
+    async initializeFilters(lens) {
+      await this.$store.dispatch('fetchFilters', { resourceName: this.resourceName, lens })
+      this.initializeState(lens)
     },
 
     /**
      * Initialize the filter state
      */
-    async initializeState() {
-      if (this.initialEncodedFilters) {
-        await this.$store.dispatch(
-          'initializeCurrentFilterValuesFromQueryString',
-          this.initialEncodedFilters
-        )
-      } else {
-        await this.$store.dispatch('resetFilterState', this.resourceName)
-      }
+    async initializeState(lens) {
+      this.initialEncodedFilters
+        ? await this.$store.dispatch(
+            'initializeCurrentFilterValuesFromQueryString',
+            this.initialEncodedFilters
+          )
+        : await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName, lens })
     },
   },
 
