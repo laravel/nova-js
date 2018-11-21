@@ -2,50 +2,20 @@ import each from 'lodash/each'
 import get from 'lodash/get'
 
 export default {
-  data() {
-    return {
-      filters: [],
-      currentFilters: [],
-    }
-  },
-
   methods: {
     /**
-     * Initialize the current filter values from the decoded query string.
+     * Clear filters and reset the resource table
      */
-    initializeFilterValuesFromQueryString() {
-      this.clearAllFilters()
-
-      if (this.encodedFilters) {
-        this.currentFilters = JSON.parse(atob(this.encodedFilters))
-
-        this.syncFilterValues()
+    async clearSelectedFilters(lens) {
+      if (lens) {
+        await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName, lens })
+      } else {
+        await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName })
       }
-    },
 
-    /**
-     * Reset all of the current filters.
-     */
-    clearAllFilters() {
-      this.currentFilters = []
-
-      each(this.filters, filter => {
-        filter.currentValue = ''
-      })
-    },
-
-    /**
-     * Sync the current filter values with the decoded filter query string values.
-     */
-    syncFilterValues() {
-      each(this.filters, filter => {
-        filter.currentValue = get(
-          _(this.currentFilters).find(decoded => {
-            return filter.class == decoded.class
-          }),
-          'value',
-          filter.currentValue
-        )
+      this.updateQueryString({
+        [this.pageParameter]: 1,
+        [this.filterParameter]: '',
       })
     },
 
@@ -55,17 +25,37 @@ export default {
     filterChanged() {
       this.updateQueryString({
         [this.pageParameter]: 1,
-        [this.filterParameter]: btoa(JSON.stringify(this.currentFilters)),
+        [this.filterParameter]: this.$store.getters.currentEncodedFilters,
       })
+    },
+
+    /**
+     * Set up filters for the current view
+     */
+    async initializeFilters(lens) {
+      await this.$store.dispatch('fetchFilters', { resourceName: this.resourceName, lens })
+      this.initializeState(lens)
+    },
+
+    /**
+     * Initialize the filter state
+     */
+    async initializeState(lens) {
+      this.initialEncodedFilters
+        ? await this.$store.dispatch(
+            'initializeCurrentFilterValuesFromQueryString',
+            this.initialEncodedFilters
+          )
+        : await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName, lens })
     },
   },
 
   computed: {
     /**
-     * Get the encoded filters from the query string.
+     * Get the name of the filter query string variable.
      */
-    encodedFilters() {
-      return this.$route.query[this.filterParameter] || ''
+    filterParameter() {
+      return this.resourceName + '_filter'
     },
   },
 }
