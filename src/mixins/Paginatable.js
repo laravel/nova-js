@@ -13,6 +13,13 @@ export default {
     selectNextPage() {
       this.updateQueryString({ [this.pageParameter]: this.currentPage + 1 })
     },
+
+    /**
+     * Select the specified page.
+     */
+    selectPage(page) {
+      this.updateQueryString({ [this.pageParameter]: page })
+    }
   },
 
   computed: {
