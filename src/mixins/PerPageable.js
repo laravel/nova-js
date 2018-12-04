@@ -6,7 +6,7 @@ export default {
     },
   },
 
-  data: () => ({ perPage: this.initialPerPage }),
+  data: () => ({ perPage: 25 }),
 
   methods: {
     /**
