@@ -8,9 +8,14 @@ export default {
      */
     async clearSelectedFilters(lens) {
       if (lens) {
-        await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName, lens })
+        await this.$store.dispatch(`${this.resourceName}/resetFilterState`, {
+          resourceName: this.resourceName,
+          lens,
+        })
       } else {
-        await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName })
+        await this.$store.dispatch(`${this.resourceName}/resetFilterState`, {
+          resourceName: this.resourceName,
+        })
       }
 
       this.updateQueryString({
@@ -25,7 +30,7 @@ export default {
     filterChanged() {
       this.updateQueryString({
         [this.pageParameter]: 1,
-        [this.filterParameter]: this.$store.getters.currentEncodedFilters,
+        [this.filterParameter]: this.$store.getters[`${this.resourceName}/currentEncodedFilters`],
       })
     },
 
@@ -33,8 +38,14 @@ export default {
      * Set up filters for the current view
      */
     async initializeFilters(lens) {
-      await this.$store.dispatch('fetchFilters', { resourceName: this.resourceName, lens })
-      this.initializeState(lens)
+      // Clear out the filters from the store first
+      this.$store.commit(`${this.resourceName}/clearFilters`)
+
+      await this.$store.dispatch(`${this.resourceName}/fetchFilters`, {
+        resourceName: this.resourceName,
+        lens,
+      })
+      await this.initializeState(lens)
     },
 
     /**
@@ -43,10 +54,13 @@ export default {
     async initializeState(lens) {
       this.initialEncodedFilters
         ? await this.$store.dispatch(
-            'initializeCurrentFilterValuesFromQueryString',
+            `${this.resourceName}/initializeCurrentFilterValuesFromQueryString`,
             this.initialEncodedFilters
           )
-        : await this.$store.dispatch('resetFilterState', { resourceName: this.resourceName, lens })
+        : await this.$store.dispatch(`${this.resourceName}/resetFilterState`, {
+            resourceName: this.resourceName,
+            lens,
+          })
     },
   },
 
