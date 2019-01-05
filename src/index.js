@@ -2,6 +2,7 @@
 import BehavesAsPanel from './mixins/BehavesAsPanel'
 import Deletable from './mixins/Deletable'
 import Filterable from './mixins/Filterable'
+import Filter from './mixins/Filter'
 import FormField from './mixins/FormField'
 import HandlesValidationErrors from './mixins/HandlesValidationErrors'
 import HasCards from './mixins/HasCards'
@@ -26,6 +27,7 @@ export {
   BehavesAsPanel,
   Deletable,
   Filterable,
+  Filter,
   FormField,
   HandlesValidationErrors,
   HasCards,
