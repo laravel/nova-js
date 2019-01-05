@@ -11,11 +11,12 @@ export default {
   },
 
   methods: {
+
     /**
      * Update filter value.
      * @param value
      */
-    handleChange(value) {
+    change(value) {
       this.$store.commit(`${this.namespace}/updateFilterState`, {
         filterClass: this.filterKey,
         value,
@@ -23,6 +24,30 @@ export default {
 
       this.$emit('change')
     },
+
+    /**
+     * Set option value for filter.
+     *
+     * @param {string} option
+     * @param {*} value
+     * @return {*}
+     */
+    changeOption(option, value) {
+      this.change({ ...this.value, [option]: value })
+    },
+
+    /**
+     * Get option value for filter.
+     *
+     * @param {string} option
+     * @return {*}
+     */
+    optionValue(option) {
+      return this.$store.getters[`${this.namespace}/filterOptionValue`](
+          this.filterKey,
+          option
+      )
+    }
   },
 
   computed: {
