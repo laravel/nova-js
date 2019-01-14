@@ -1,4 +1,4 @@
-export default {
+export const Deletable = {
   methods: {
     /**
      * Open the delete menu modal.

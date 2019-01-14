@@ -1,6 +1,6 @@
 import defaults from 'lodash/defaults'
 
-export default {
+export const InteractsWithQueryString = {
     methods: {
         /**
          * Update the given query string values.

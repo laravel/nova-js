@@ -1,4 +1,4 @@
-export default {
+export const BehavesAsPanel = {
   props: ['resourceName', 'resourceId', 'resource', 'panel'],
 
   methods: {

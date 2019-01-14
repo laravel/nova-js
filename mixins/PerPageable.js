@@ -1,4 +1,4 @@
-export default {
+export const PerPageable = {
   data: () => ({ perPage: 25 }),
 
   methods: {

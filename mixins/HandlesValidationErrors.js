@@ -1,6 +1,6 @@
-import { Errors } from 'form-backend-validation'
+import { Errors } from '../util/errors'
 
-export default {
+export const HandlesValidationErrors = {
   props: {
     errors: {
       default: () => new Errors(),

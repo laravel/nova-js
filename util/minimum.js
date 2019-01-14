@@ -1,4 +1,4 @@
-export default function(originalPromise, delay = 100) {
+export function Minimum(originalPromise, delay = 100) {
     return Promise.all([
         originalPromise,
         new Promise(resolve => {

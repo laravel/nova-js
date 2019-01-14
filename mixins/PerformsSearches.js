@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce'
 
-export default {
+export const PerformsSearches = {
   data: () => ({
     search: '',
     selectedResource: '',

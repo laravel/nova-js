@@ -1,4 +1,6 @@
-export default {
+import moment from 'moment';
+
+export const InteractsWithDates = {
   methods: {
     /**
      * Convert the given localized date time string to the application's timezone.

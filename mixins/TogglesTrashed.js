@@ -1,4 +1,4 @@
-export default {
+export const TogglesTrashed = {
   data: () => ({
     withTrashed: false,
   }),

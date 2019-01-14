@@ -1,6 +1,6 @@
-import cardSizes from '../util/cardSizes'
+import { CardSizes } from '../util/cardSizes'
 
-export default {
+export const HasCards = {
   props: {
     loadCards: {
       type: Boolean,
@@ -46,7 +46,7 @@ export default {
      * Return the small cards used for the Dashboard
      */
     smallCards() {
-      return _.filter(this.cards, c => cardSizes.indexOf(c.width) !== -1)
+      return _.filter(this.cards, c => CardSizes.indexOf(c.width) !== -1)
     },
 
     /**

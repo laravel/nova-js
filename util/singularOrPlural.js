@@ -1,6 +1,6 @@
-import { Inflector } from '../'
+import { Inflector } from './inflector'
 
-export default function singularOrPlural(value, suffix) {
+export function SingularOrPlural(value, suffix) {
     if (value > 1 || value == 0) return Inflector.pluralize(suffix)
     return Inflector.singularize(suffix)
 }
