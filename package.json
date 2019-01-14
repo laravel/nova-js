@@ -22,11 +22,17 @@
   },
   "homepage": "https://nova.laravel.com",
   "dependencies": {
-    "@babel/runtime": "^7.2.0",
-    "babel-plugin-syntax-jsx": "^6.18.0",
     "form-backend-validation": "^2.3.3",
     "inflector-js": "^1.0.1",
     "lodash": "^4.17.11",
     "moment": "^2.23.0"
+  },
+  "optionalDependencies": {
+    "@babel/runtime": "^7.2.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
