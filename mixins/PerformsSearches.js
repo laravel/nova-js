@@ -1,5 +1,3 @@
-import debounce from 'lodash/debounce'
-
 export const PerformsSearches = {
   data: () => ({
     search: '',
@@ -55,6 +53,6 @@ export const PerformsSearches = {
     /**
      * Debounce function for the search handler
      */
-    debouncer: debounce(callback => callback(), 500),
+    debouncer: _.debounce(callback => callback(), 500),
   },
 }

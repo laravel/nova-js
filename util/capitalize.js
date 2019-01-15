@@ -1,3 +1,1 @@
-import * as Capitalize from 'lodash/upperFirst'
-
-export { Capitalize };
+export const Capitalize = _.upperFirst

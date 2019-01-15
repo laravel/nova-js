@@ -1,12 +1,10 @@
-import find from 'lodash/find'
-
 export const InteractsWithResourceInformation = {
   computed: {
     /**
      * Get the resource information object for the current resource.
      */
     resourceInformation() {
-      return find(Nova.config.resources, resource => {
+      return _.find(Nova.config.resources, resource => {
         return resource.uriKey == this.resourceName
       })
     },
@@ -19,7 +17,7 @@ export const InteractsWithResourceInformation = {
         return
       }
 
-      return find(Nova.config.resources, resource => {
+      return _.find(Nova.config.resources, resource => {
         return resource.uriKey == this.viaResource
       })
     },
