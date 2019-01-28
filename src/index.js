@@ -20,6 +20,7 @@ import Capitalize from './util/capitalize'
 import Minimum from './util/minimum'
 import { Errors } from 'form-backend-validation'
 import SingularOrPlural from './util/singularOrPlural'
+import { FormStorage } from './util/FormStorage'
 
 export {
   // Mixins
@@ -37,6 +38,7 @@ export {
   PerPageable,
   TogglesTrashed,
   // Util
+  FormStorage,
   Errors,
   Inflector,
   Capitalize,

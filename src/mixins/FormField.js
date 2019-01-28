@@ -2,6 +2,10 @@ export default {
   props: {
     resourceName: {},
     field: {},
+    form: {
+      type: Object,
+      required: true,
+    }
   },
 
   data: () => ({
@@ -12,20 +16,31 @@ export default {
     this.setInitialValue()
 
     // Add a default fill method for the field
-    this.field.fill = this.fill
+    this.form.add(this.fill, this)
 
     // Register a global event for setting the field's value
     Nova.$on(this.field.attribute + '-value', value => {
       this.value = value
     })
+
+    this.initializeComponent()
   },
 
   destroyed() {
     Nova.$off(this.field.attribute + '-value')
+
+    this.form.remove(this.fill)
   },
 
   methods: {
-    /*
+    /**
+     * Initialize component.
+     */
+    initializeComponent() {
+
+    },
+
+    /**
      * Set the initial value for the field
      */
     setInitialValue() {
