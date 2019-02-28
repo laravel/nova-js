@@ -49,4 +49,13 @@ export default {
       this.value = value
     },
   },
+
+  computed: {
+    /**
+     * Determine if the field is in readonly mode
+     */
+    isReadonly() {
+      return this.field.readonly || _.get(this.field, 'extraAttributes.readonly')
+    },
+  }
 }
