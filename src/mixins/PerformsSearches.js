@@ -41,13 +41,10 @@ export default {
       // so let's just set the availableResources to an empty array to avoid
       // loading a huge result set
       if (trimmedSearch == '') {
-        this.clearSelection()
-
         return
       }
 
       this.debouncer(() => {
-        this.selectedResource = ''
         this.getAvailableResources(trimmedSearch)
       }, 500)
     },
