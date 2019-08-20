@@ -32,6 +32,7 @@ export default {
         [this.pageParameter]: 1,
         [this.filterParameter]: this.$store.getters[`${this.resourceName}/currentEncodedFilters`],
       })
+      this.getResources()
     },
 
     /**
