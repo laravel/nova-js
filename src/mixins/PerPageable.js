@@ -1,5 +1,5 @@
 export default {
-  data: () => ({ perPage: 25 }),
+  data: () => ({ perPage: null }),
 
   methods: {
     /**
@@ -22,7 +22,7 @@ export default {
      * Get the current per page value from the query string.
      */
     currentPerPage() {
-      return this.$route.query[this.perPageParameter] || 25
+      return this.$route.query[this.perPageParameter] || null
     },
   },
 }
