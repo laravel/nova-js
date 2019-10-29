@@ -1,7 +1,12 @@
+import { mapProps } from '../propTypes'
+
 export default {
   props: {
-    resourceName: {},
-    field: {},
+    shownViaNewRelationModal: {
+      type: Boolean,
+      default: false,
+    },
+    ...mapProps(['formField', 'viaAttributes']),
   },
 
   data: () => ({
@@ -57,5 +62,5 @@ export default {
     isReadonly() {
       return this.field.readonly || _.get(this.field, 'extraAttributes.readonly')
     },
-  }
+  },
 }
