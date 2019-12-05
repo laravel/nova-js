@@ -43,6 +43,9 @@ export default {
 
       await this.$store.dispatch(`${this.resourceName}/fetchFilters`, {
         resourceName: this.resourceName,
+        viaResource: this.viaResource,
+        viaResourceId: this.viaResourceId,
+        viaRelationship: this.viaRelationship,
         lens,
       })
       await this.initializeState(lens)
