@@ -34,7 +34,7 @@
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.4.0",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2",
+    "webpack-dev-server": "^3.1.11",
     "webpack-merge": "^4.1.0"
   },
   "jest": {
