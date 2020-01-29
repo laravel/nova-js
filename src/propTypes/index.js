@@ -1,53 +1,38 @@
 import _ from 'lodash'
 
-const shownViaNewRelationshipModal = {
+const propTypes = {
   shownViaNewRelationModal: {
     type: Boolean,
     default: false,
   },
-}
 
-const formField = {
+  resourceId: { type: [Number, String] },
+
   resourceName: { type: String },
+
   field: {
     type: Object,
     required: true,
   },
-}
 
-const viaAttributes = {
   viaResource: {
     type: String,
     required: false,
   },
+
   viaResourceId: {
     type: [String, Number],
     required: false,
   },
+
   viaRelationship: {
     type: String,
     required: false,
   },
 }
 
-const propTypes = {
-  shownViaNewRelationshipModal,
-  formField,
-  viaAttributes,
-}
-
 function mapProps(attributes) {
-  return _.reduce(
-    _.pick(propTypes, attributes),
-    (result, value, key) => {
-      Object.keys(value).forEach(key => {
-        result[key] = value[key]
-      })
-
-      return result
-    },
-    {}
-  )
+  return _.pick(propTypes, attributes)
 }
 
 export { mapProps }

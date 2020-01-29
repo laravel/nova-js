@@ -22,7 +22,7 @@ import { Errors } from 'form-backend-validation'
 import SingularOrPlural from './util/singularOrPlural'
 
 // PropTypes
-import PropTypes from './propTypes'
+import { mapProps } from './propTypes'
 
 export {
   // Mixins
@@ -47,5 +47,5 @@ export {
   SingularOrPlural,
   CardSizes,
   // PropTypes
-  PropTypes,
+  mapProps,
 }

@@ -1,13 +1,14 @@
 import { mapProps } from '../propTypes'
 
 export default {
-  props: {
-    shownViaNewRelationModal: {
-      type: Boolean,
-      default: false,
-    },
-    ...mapProps(['formField', 'viaAttributes']),
-  },
+  props: mapProps([
+    'shownViaNewRelationModal',
+    'field',
+    'viaResource',
+    'viaResourceId',
+    'viaRelationship',
+    'resourceName',
+  ]),
 
   data: () => ({
     value: '',
