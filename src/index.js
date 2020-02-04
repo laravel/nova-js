@@ -21,6 +21,9 @@ import Minimum from './util/minimum'
 import { Errors } from 'form-backend-validation'
 import SingularOrPlural from './util/singularOrPlural'
 
+// PropTypes
+import { mapProps } from './propTypes'
+
 export {
   // Mixins
   BehavesAsPanel,
@@ -43,4 +46,6 @@ export {
   Minimum,
   SingularOrPlural,
   CardSizes,
+  // PropTypes
+  mapProps,
 }

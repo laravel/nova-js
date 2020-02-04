@@ -1,8 +1,14 @@
+import { mapProps } from '../propTypes'
+
 export default {
-  props: {
-    resourceName: {},
-    field: {},
-  },
+  props: mapProps([
+    'shownViaNewRelationModal',
+    'field',
+    'viaResource',
+    'viaResourceId',
+    'viaRelationship',
+    'resourceName',
+  ]),
 
   data: () => ({
     value: '',
@@ -57,5 +63,5 @@ export default {
     isReadonly() {
       return this.field.readonly || _.get(this.field, 'extraAttributes.readonly')
     },
-  }
+  },
 }
