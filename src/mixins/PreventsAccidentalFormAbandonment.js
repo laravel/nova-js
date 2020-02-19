@@ -1,18 +1,29 @@
 export default {
-    beforeRouteLeave(to, from, next) {
-        if (this.canLeave) {
-            next()
-            return;
-        }
+  beforeRouteLeave(to, from, next) {
+    if (this.canLeave) {
+        next()
+        return;
+    }
 
-        const answer = window.confirm(
-            this.__('Do you really want to leave? You have unsaved changes.')
-        )
-        if (answer) {
-            next()
-            return;
-        } 
+    const answer = window.confirm(
+        this.__('Do you really want to leave? You have unsaved changes.')
+    )
 
-        next(false)
-    },
+    if (answer) {
+        next()
+        return;
+    }
+
+    next(false)
+  },
+
+  data: () => ({
+    canLeave: true
+  }),
+
+  methods: {
+    updateFormStatus() {
+      this.canLeave = false;
+    }
+  },
 }
