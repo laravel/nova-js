@@ -22,6 +22,9 @@ export default {
   }),
 
   methods: {
+    /**
+     * Prevent accidental abandonment only if form was changed.
+     */
     updateFormStatus() {
       this.canLeave = false;
     }
