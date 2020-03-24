@@ -8,7 +8,7 @@ const propTypes = {
 
   resourceId: { type: [Number, String] },
 
-  resourceName: { type: String },
+  resourceName: { type: String, required: true },
 
   field: {
     type: Object,
@@ -17,17 +17,20 @@ const propTypes = {
 
   viaResource: {
     type: String,
-    required: false,
+    required: true,
+    default: '',
   },
 
   viaResourceId: {
     type: [String, Number],
-    required: false,
+    required: true,
+    default: '',
   },
 
   viaRelationship: {
     type: String,
-    required: false,
+    required: true,
+    default: '',
   },
 }
 
