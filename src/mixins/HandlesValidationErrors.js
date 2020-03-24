@@ -20,13 +20,17 @@ export default {
       return this.field.attribute
     },
 
+    validationKey() {
+      return this.field.validationKey
+    },
+
     hasError() {
-      return this.errors.has(this.fieldAttribute)
+      return this.errors.has(this.validationKey)
     },
 
     firstError() {
       if (this.hasError) {
-        return this.errors.first(this.fieldAttribute)
+        return this.errors.first(this.validationKey)
       }
     },
   },
