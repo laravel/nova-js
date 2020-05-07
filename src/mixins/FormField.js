@@ -27,7 +27,7 @@ export default {
   },
 
   destroyed() {
-    Nova.$off(this.field.attribute + '-value')
+    Nova.$off(this.field.attribute + '-value')        
   },
 
   methods: {
@@ -53,6 +53,7 @@ export default {
      */
     handleChange(value) {
       this.value = value
+      Nova.$emit(this.field.attribute + '-change', value)      
     },
   },
 
