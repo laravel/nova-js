@@ -27,7 +27,7 @@ export default {
   },
 
   destroyed() {
-    Nova.$off(this.field.attribute + '-value')        
+    Nova.$off(this.field.attribute + '-value')
   },
 
   methods: {
