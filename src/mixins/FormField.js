@@ -53,6 +53,7 @@ export default {
      */
     handleChange(value) {
       this.value = value
+      Nova.$emit(this.field.attribute + '-change', value)
     },
   },
 
