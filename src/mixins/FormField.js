@@ -8,6 +8,7 @@ export default {
     'viaResourceId',
     'viaRelationship',
     'resourceName',
+    'showHelpText',
   ]),
 
   data: () => ({

@@ -1,6 +1,11 @@
 import _ from 'lodash'
 
 const propTypes = {
+  showHelpText: {
+    type: Boolean,
+    default: false,
+  },
+
   shownViaNewRelationModal: {
     type: Boolean,
     default: false,
