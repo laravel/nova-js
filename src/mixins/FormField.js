@@ -52,9 +52,9 @@ export default {
     /**
      * Update the field's internal value
      */
-    handleChange(value) {
+    handleChange(event) {
       this.value = value
-      Nova.$emit(this.field.attribute + '-change', value)
+      Nova.$emit(this.field.attribute + '-change', event.target.value)
     },
   },
 
