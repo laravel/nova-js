@@ -1,24 +1,22 @@
 export default {
   beforeRouteLeave(to, from, next) {
     if (this.canLeave) {
-        next()
-        return;
+      next()
+      return
     }
 
-    const answer = window.confirm(
-        this.__('Do you really want to leave? You have unsaved changes.')
-    )
+    const answer = window.confirm(this.__('Do you really want to leave? You have unsaved changes.'))
 
     if (answer) {
-        next()
-        return;
+      next()
+      return
     }
 
     next(false)
   },
 
   data: () => ({
-    canLeave: true
+    canLeave: true,
   }),
 
   methods: {
@@ -26,7 +24,7 @@ export default {
      * Prevent accidental abandonment only if form was changed.
      */
     updateFormStatus() {
-      this.canLeave = false;
-    }
+      this.canLeave = false
+    },
   },
 }

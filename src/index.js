@@ -11,7 +11,7 @@ import InteractsWithResourceInformation from './mixins/InteractsWithResourceInfo
 import Paginatable from './mixins/Paginatable'
 import PerformsSearches from './mixins/PerformsSearches'
 import PerPageable from './mixins/PerPageable'
-import PreventsAccidentalFormAbandonment from './mixins/PreventsAccidentalFormAbandonment'
+import PreventsFormAbandonment from './mixins/PreventsFormAbandonment'
 import TogglesTrashed from './mixins/TogglesTrashed'
 
 // Util
@@ -39,7 +39,7 @@ export {
   Paginatable,
   PerformsSearches,
   PerPageable,
-  PreventsAccidentalFormAbandonment,
+  PreventsFormAbandonment,
   TogglesTrashed,
   // Util
   Errors,
