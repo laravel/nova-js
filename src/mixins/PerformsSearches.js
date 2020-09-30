@@ -13,7 +13,10 @@ export default {
      */
     selectResource(resource) {
       this.selectedResource = resource
-      Nova.$emit(this.field.attribute + '-change', this.selectedResource.value)
+
+      if (this.field) {
+        Nova.$emit(this.field.attribute + '-change', this.selectedResource.value)
+      }
     },
 
     /**
@@ -29,7 +32,10 @@ export default {
     clearSelection() {
       this.selectedResource = ''
       this.availableResources = []
-      Nova.$emit(this.field.attribute + '-change', null)
+
+      if (this.field) {
+        Nova.$emit(this.field.attribute + '-change', null)
+      }
     },
 
     /**

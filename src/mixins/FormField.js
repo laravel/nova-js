@@ -54,7 +54,10 @@ export default {
      */
     handleChange(event) {
       this.value = event.target.value
-      Nova.$emit(this.field.attribute + '-change', this.value)
+
+      if (this.field) {
+        Nova.$emit(this.field.attribute + '-change', this.value)
+      }
     },
   },
 
