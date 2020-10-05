@@ -34,6 +34,11 @@ const propTypes = {
     type: String,
     required: false,
   },
+
+  shouldOverrideMeta: {
+    type: Boolean,
+    default: false,
+  },
 }
 
 function mapProps(attributes) {
