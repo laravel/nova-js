@@ -7,6 +7,11 @@ export default {
          */
         updateQueryString(value) {
             this.$router.push({ query: defaults(value, this.$route.query) })
+                .catch(error => {
+                    if (error.name != "NavigationDuplicated") {
+                        throw error;
+                    }
+                });
         },
     },
 }
