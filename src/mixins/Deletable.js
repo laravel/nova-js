@@ -70,6 +70,7 @@ export default {
         params: {
           ...this.queryString,
           ...{ resources: mapResources(resources) },
+          ...{ pivots: mapPivots(resources) },
         },
       }).then(() => {
         this.deleteModalOpen = false
@@ -239,4 +240,8 @@ export default {
 
 function mapResources(resources) {
   return _.map(resources, resource => resource.id.value)
+}
+
+function mapPivots(resources) {
+  return _.filter(_.map(resources, resource => resource.id.pivotValue))
 }
