@@ -23,7 +23,7 @@ import { Errors } from 'form-backend-validation'
 import SingularOrPlural from './util/singularOrPlural'
 
 // PropTypes
-import { mapProps } from './propTypes'
+import mapProps from './propTypes'
 
 export {
   // Mixins

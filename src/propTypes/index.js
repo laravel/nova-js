@@ -41,8 +41,6 @@ const propTypes = {
   },
 }
 
-function mapProps(attributes) {
+export default function mapProps(attributes) {
   return _.pick(propTypes, attributes)
 }
-
-export { mapProps }

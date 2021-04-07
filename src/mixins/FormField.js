@@ -1,4 +1,4 @@
-import { mapProps } from '../propTypes'
+import mapProps from '../propTypes'
 
 export default {
   props: mapProps([
