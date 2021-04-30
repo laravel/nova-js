@@ -29,6 +29,8 @@ export default {
               this.deleteModalOpen = false
               this.getResources()
             }
+
+        Nova.$emit('resources-deleted')
       )
     },
 
@@ -57,6 +59,8 @@ export default {
       }).then(() => {
         this.deleteModalOpen = false
         this.getResources()
+
+        Nova.$emit('resources-deleted')
       })
     },
 
@@ -160,6 +164,8 @@ export default {
 
               this.getResources()
             }
+
+        Nova.$emit('resources-restored')
       )
     },
 
@@ -184,6 +190,8 @@ export default {
       }).then(() => {
         this.restoreModalOpen = false
         this.getResources()
+
+        Nova.$emit('resources-restored')
       })
     },
   },
