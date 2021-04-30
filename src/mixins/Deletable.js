@@ -29,9 +29,9 @@ export default {
               this.deleteModalOpen = false
               this.getResources()
             }
-
+      ).then(() => {
         Nova.$emit('resources-deleted')
-      )
+      })
     },
 
     /**
@@ -59,7 +59,7 @@ export default {
       }).then(() => {
         this.deleteModalOpen = false
         this.getResources()
-
+      }).then(() => {
         Nova.$emit('resources-deleted')
       })
     },
@@ -79,6 +79,8 @@ export default {
       }).then(() => {
         this.deleteModalOpen = false
         this.getResources()
+      }).then(() => {
+        Nova.$emit('resources-detached')
       })
     },
 
@@ -96,6 +98,8 @@ export default {
       }).then(() => {
         this.deleteModalOpen = false
         this.getResources()
+      }).then(() => {
+        Nova.$emit('resources-detached')
       })
     },
 
@@ -118,7 +122,9 @@ export default {
 
               this.getResources()
             }
-      )
+      ).then(() => {
+        Nova.$emit('resources-deleted')
+      })
     },
 
     /**
@@ -142,6 +148,8 @@ export default {
       }).then(() => {
         this.deleteModalOpen = false
         this.getResources()
+      }).then(() => {
+        Nova.$emit('resources-deleted')
       })
     },
 
@@ -164,9 +172,9 @@ export default {
 
               this.getResources()
             }
-
+      ).then(() => {
         Nova.$emit('resources-restored')
-      )
+      })
     },
 
     /**
@@ -190,7 +198,7 @@ export default {
       }).then(() => {
         this.restoreModalOpen = false
         this.getResources()
-
+      }).then(() => {
         Nova.$emit('resources-restored')
       })
     },
