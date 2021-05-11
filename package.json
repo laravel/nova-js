@@ -2,12 +2,12 @@
   "name": "laravel-nova",
   "version": "1.12.1",
   "description": "Supporting modules for Laravel Nova",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "NODE_ENV=production webpack --watch --config webpack.config.js",
     "demo": "NODE_ENV=production webpack --config webpack.config.js",
     "build": "rm -rf dist && NODE_ENV=production webpack",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "jest"
   },
   "repository": {
