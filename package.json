@@ -2,7 +2,7 @@
   "name": "laravel-nova",
   "version": "1.12.2",
   "description": "Supporting modules for Laravel Nova",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "NODE_ENV=production webpack --watch --config webpack.config.js",
     "demo": "NODE_ENV=production webpack --config webpack.config.js",
@@ -14,9 +14,7 @@
     "type": "git",
     "url": "https://github.com/laravel/nova-js"
   },
-  "keywords": [
-    "laravel"
-  ],
+  "keywords": ["laravel"],
   "author": "Taylor Otwell",
   "contributors": [
     "Taylor Otwell <taylor@laravel.com> (http://laravel.com/)",
@@ -41,9 +39,7 @@
   },
   "jest": {
     "testRegex": "test.js$",
-    "moduleFileExtensions": [
-      "js"
-    ],
+    "moduleFileExtensions": ["js"],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     }
